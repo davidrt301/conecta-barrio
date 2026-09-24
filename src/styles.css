@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* Paleta: veterinaria moderna, azul sereno y confiable */
+  --azul-principal: #2b7a9e;
+  --azul-oscuro: #75531f;
+  --azul-claro: #e8f4f9;
+  --fondo: #9197aeff;
+  --superficie: #ffffff;
+  --texto: #1a2833;
+  --texto-suave: #5a7180;
+  --borde: #f0e3db;
+
+  /* Escala de espaciado consistente (múltiplos de 8px) */
+  --espacio-xs: 8px;
+  --espacio-sm: 16px;
+  --espacio-md: 24px;
+  --espacio-lg: 40px;
+
+  /* Detalles de forma */
+  --radio: 14px;
+  --sombra: 0 4px 16px rgba(31, 90, 117, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
