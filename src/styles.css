@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   /* Paleta: veterinaria moderna, azul sereno y confiable */
-  --azul-principal: #2b7a9e;
-  --azul-oscuro: #75531f;
+  --azul-principal: #f02d3aff;
+  --azul-oscuro: #f02d3aff;
   --azul-claro: #e8f4f9;
-  --fondo: #9197aeff;
-  --superficie: #ffffff;
+  --fondo: #eff6eeff;
+  --superficie: #9197aeff;
   --texto: #1a2833;
   --texto-suave: #5a7180;
   --borde: #f0e3db;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Lideres } from '../../services/lideres';
 
 @Component({
   imports: [],
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './lideres-listado.css',
   templateUrl: './lideres-listado.html',
 })
-export class LideresListado {}
+export class LideresListado {
+  private lideresService = inject(Lideres);
+
+  lideres = this.lideresService.lideres;
+  cargando = this.lideresService.cargando;
+  error = this.lideresService.error;
+}

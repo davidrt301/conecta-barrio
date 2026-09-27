@@ -1,1 +1,38 @@
-<p>lideres-listado works!</p>
+<h1 class="titulo-pagina">Lideres</h1>
+
+@if (cargando()) {
+  <p class="estado-carga">Cargando lideres desde el servidor...</p>
+}
+
+@if (error()) {
+  <p class="estado-error">{{ error() }}</p>
+}
+
+@if (!cargando() && !error()) {
+  <table class="tabla-duenos">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Ciudad</th>
+        <th>Nombre Compañía</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (d of lideres(); track d.id) {
+        <tr>
+          <td>{{ d.id }}</td>
+          <td>{{ d.name }}</td>
+          <td>{{ d.email || '—' }}</td>
+          <td>{{ d.phone || '—' }}</td>
+          <td>{{ d.address?.city || '—' }}</td>
+          <td>{{ d.company?.name || '—'}}</td>
+        </tr>
+      } @empty {
+        <tr><td colspan="4" class="sin-resultado">Todavía no hay dueños registrados.</td></tr>
+      }
+    </tbody>
+  </table>
+}

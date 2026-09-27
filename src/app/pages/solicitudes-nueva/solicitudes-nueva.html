@@ -1,1 +1,9 @@
-<p>solicitudes-nueva works!</p>
+<section class="registro">
+  <h2 class="registro-titulo">Registrar nueva solicitud</h2>
+  <form class="registro-form" (submit)="registrarSolicitud($event, inputTitle, inputBody, inputUserId)">
+    <input #inputTitle type="text" placeholder="Título" required>
+    <input #inputBody type="text" placeholder="Descripción" required>
+    <input #inputUserId type="text" placeholder="ID del Usuario" required>
+    <button type="submit" class="registro-boton">Registrar</button>
+  </form>
+</section>

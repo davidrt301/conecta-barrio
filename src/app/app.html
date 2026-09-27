@@ -1,16 +1,24 @@
-<h1>
-  Bienvenido a {{ nombreClinica }}
-</h1>
-<h1>Catálogo de {{ nombreClinica }}</h1>
+<nav class="barra">
+  <span class="marca">🐾 app manejo de solicitudes</span>
+  <div class="barra-links">
+    <a routerLink="/" class="barra-link">Inicio</a>
+    <!-- <a routerLink="/solicitudes-detalle" class="barra-link">Solicitudes Detalle</a> -->
+    <a routerLink="/solicitudes-listado" class="barra-link">Solicitudes Listado</a>
+    <a routerLink="/solicitudes/nueva" class="barra-link">Nueva Solicitud</a>
+    <a routerLink="/lideres" class="barra-link">Lideres</a>
+    <!-- <a routerLink="/mascotas" class="barra-link">
+      Mascotas
+      @if (totalFavoritos() > 0) {
+        <span class="badge">{{ totalFavoritos() }}</span>
+      }
+    </a> -->
+  </div>
+</nav>
 
-@if (mascotas.length === 0) {
-  <p>No hay mascotas registradas.</p>
-} @else {
-  @for (m of mascotas; track m.nombre) {
-    <app-solicitudes-card
-      [nombre]="m.nombre"
-      [especie]="m.especie"
-      [edad]="m.edad">
-    </app-solicitudes-card>
-  }
-}
+<main class="contenido">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="pie">
+  <p>Todos los derechos reservados.</p>
+</footer>

@@ -1,1 +1,33 @@
-<p>solicitudes-listado works!</p>
+<h1>Solicitudes Listado</h1>
+
+<div class = "buscador-contenedor">
+  <input
+    #inputBusqueda
+    type="text"
+    class="buscador"
+    placeholder="Buscar solicitudes por nombre..."
+    (input)="buscar.set(inputBusqueda.value)"
+  />
+</div>
+
+@if (cargando()) {
+  <p class="estado-carga">Cargando solicitudes...</p>
+}
+
+@if (error()) {
+  <p class="estado-error">{{ error() }}</p>
+}
+
+@if (!cargando() && !error()) {
+  <div class="grid">
+    @for (s of solicitudesFiltradas(); track s.id) {
+      <a [routerLink]="['/solicitudes-listado', s.id]" class="card-link">
+        <app-solicitudes-card [title]="s.title" [id]="s.id" [userId]="s.userId" [body]="s.body">
+        </app-solicitudes-card>
+      </a>
+
+    } @empty {
+      <p class="sin-resultado">No encontramos solicitudes con ese nombre.</p>
+    }
+  </div>
+}
