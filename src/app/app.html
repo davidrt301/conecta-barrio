@@ -1,20 +1,25 @@
+
 <nav class="barra">
-  <span class="marca">🐾 app manejo de solicitudes</span>
-  <div class="barra-links">
-    <a routerLink="/" class="barra-link">Inicio</a>
-    <!-- <a routerLink="/solicitudes-detalle" class="barra-link">Solicitudes Detalle</a> -->
-    <a routerLink="/solicitudes-listado" class="barra-link">Solicitudes Listado</a>
-    <a routerLink="/solicitudes/nueva" class="barra-link">Nueva Solicitud</a>
-    <a routerLink="/lideres" class="barra-link">Lideres</a>
-    <!-- <a routerLink="/mascotas" class="barra-link">
-      Mascotas
-      @if (totalFavoritos() > 0) {
-        <span class="badge">{{ totalFavoritos() }}</span>
-      }
-    </a> -->
+  <a class="marca" routerLink="/">App Manejo De Solicitudes</a>
+
+  <button
+    class="boton-menu"
+    type="button"
+    (click)="menuAbierto.set(!menuAbierto())"
+    [attr.aria-expanded]="menuAbierto()"
+    aria-label="Abrir menú"
+  >
+    ☰
+  </button>
+
+  <div class="barra-links" [class.abierto]="menuAbierto()">
+    <a routerLink="/" class="barra-link" (click)="menuAbierto.set(false)">Inicio</a>
+    <a routerLink="/solicitudes-listado" class="barra-link" (click)="menuAbierto.set(false)">Solicitudes Listado</a>
+    <a routerLink="/solicitudes/nueva" class="barra-link" (click)="menuAbierto.set(false)">Nueva Solicitud</a>
+    <a routerLink="/lideres" class="barra-link" (click)="menuAbierto.set(false)">Lideres</a>
+    <a routerLink="/solicitudes/prioridad" class="barra-link" (click)="menuAbierto.set(false)">Solicitudes Prioritarias</a>
   </div>
 </nav>
-
 <main class="contenido">
   <router-outlet></router-outlet>
 </main>
@@ -22,3 +27,4 @@
 <footer class="pie">
   <p>Todos los derechos reservados.</p>
 </footer>
+

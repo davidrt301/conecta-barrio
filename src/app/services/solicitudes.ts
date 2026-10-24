@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, Service, signal } from '@angular/core';
+import { computed, inject, Injectable, Service, signal } from '@angular/core';
 import { Solicitud, SolicitudNueva } from '../models/solicitud.model';
 
 @Injectable({ providedIn: 'root' })
@@ -15,6 +15,12 @@ export class Solicitudes {
   cargando = this.cargandoSignal.asReadonly();
   error = this.errorSignal.asReadonly();
 
+  private solicitudesPrioridadIds = signal<Set<number>>(new Set());
+  totalPrioridadSolicitudes = computed(() => this.solicitudesPrioridadIds().size);
+
+  solicitudesConPrioridad = computed(() =>
+    this.listaSolicitudes().filter((s) => this.solicitudesPrioridadIds().has(s.id)),
+  );
 
   constructor() {
     this.cargarSolicitudes();
@@ -25,26 +31,41 @@ export class Solicitudes {
     this.errorSignal.set(null);
 
     this.http.get<Solicitud[]>(this.apiUrl).subscribe({
-        next: (data) => {
-            this.listaSolicitudes.set(data);
-            this.cargandoSignal.set(false);
-        },
-        error: () => {
-            this.errorSignal.set('Error al cargar las solicitudes');
-            this.cargandoSignal.set(false);
-        }
-    })
+      next: (data) => {
+        this.listaSolicitudes.set(data);
+        this.cargandoSignal.set(false);
+      },
+      error: () => {
+        this.errorSignal.set('Error al cargar las solicitudes');
+        this.cargandoSignal.set(false);
+      },
+    });
   }
 
   crearSolicitud(nuevaSolicitud: SolicitudNueva) {
     this.http.post<Solicitud>(this.apiUrl, nuevaSolicitud).subscribe({
       next: (data) => {
-        this.listaSolicitudes.update(actuales => [...actuales,data]);
+        this.listaSolicitudes.update((actuales) => [...actuales, data]);
       },
-      error: () =>{
+      error: () => {
         this.errorSignal.set('No pudimos crear la solicitud');
-      }
-    })
+      },
+    });
   }
 
+  prioridad(id: number): boolean {
+    return this.solicitudesPrioridadIds().has(id);
+  }
+
+  alternarPrioridad(id: number) {
+    this.solicitudesPrioridadIds.update((actuales) => {
+      const nuevas = new Set(actuales);
+      if (nuevas.has(id)) {
+        nuevas.delete(id);
+      } else {
+        nuevas.add(id);
+      }
+      return nuevas;
+    });
+  }
 }

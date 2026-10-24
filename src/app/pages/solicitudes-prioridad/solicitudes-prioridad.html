@@ -1,0 +1,13 @@
+@if (!cargando() && !error()) {
+  <div class="grid">
+    @for (s of solicitudesConPrioridad(); track s.id) {
+      <a [routerLink]="['/solicitudes-listado', s.id]" class="card-link"> 
+        <app-solicitudes-card [title]="s.title" [id]="s.id" [userId]="s.userId" [body]="s.body">
+        </app-solicitudes-card>
+      </a>
+
+    } @empty {
+      <p class="sin-resultado">No encontramos solicitudes prioritarias.</p>
+    }
+  </div>
+}

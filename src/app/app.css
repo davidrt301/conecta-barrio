@@ -11,6 +11,7 @@
   color: #ffffff;
   font-weight: 700;
   font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .barra-links {
@@ -31,6 +32,8 @@
 }
 
 .contenido {
+  flex: 1;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: var(--espacio-lg) var(--espacio-md);
@@ -49,4 +52,54 @@
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
+}
+
+.pie {
+  width: 100%;
+  background-color: var(--superficie);
+  text-align: center;
+  margin-top: var(--espacio-lg);
+  color: var(--texto);
+  font-size: x-large;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.boton-menu {
+  display: none; /* oculto en escritorio */
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .boton-menu {
+    display: block;
+  }
+
+  .barra-links {
+    display: none; /* oculto por defecto en móvil */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--azul-principal);
+    padding: var(--espacio-sm) var(--espacio-lg);
+    gap: var(--espacio-sm);
+  }
+
+  .barra-links.abierto {
+    display: flex; /* aparece cuando el signal está en true */
+  }
+
+  .barra {
+    position: relative; /* para que el menú se posicione respecto a la barra */
+  }
 }

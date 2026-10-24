@@ -16,8 +16,6 @@ export class SolicitudesListado {
   cargando = this.solicitudesService.cargando;
   error = this.solicitudesService.error;
 
-  paginaActual = signal(1);
-  elementosPorPagina = 10;
 
   buscar = signal('');
 

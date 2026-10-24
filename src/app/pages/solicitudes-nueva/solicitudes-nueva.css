@@ -1,5 +1,5 @@
 .registro {
-  margin-top: var(--espacio-lg);
+  margin: var(--espacio-lg);
   padding: var(--espacio-md);
   background: var(--superficie);
   border: 1px solid var(--borde);

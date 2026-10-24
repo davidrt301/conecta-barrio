@@ -1,17 +1,26 @@
 <div class="card"
+  [class.prioridad]="esPrioridad"
   (mouseleave)="resetScroll(card)"
   #card
 >
+
   <div class="card-header">
-    <!-- <div class="avatar-contenedor"> -->
+    
       <span class="avatar">📝</span>
-    <!-- </div> -->
+    
     <h3>{{ title }}</h3>
+    <button
+      class="btn-prioridad"
+      type="button"
+      (click)="alternarPrioridad()"
+      [attr.aria-pressed]="esPrioridad"
+    >
+      {{ esPrioridad ? '⭐' : '☆' }}
+    </button>
   </div>
   <div class="card-body">
-    <!-- <p><span class="label">Título:</span> {{ title }}</p> -->
     <p><span class="label">ID de Solicitud:</span> {{ id }}</p>
-    <!-- <p><span class="label">ID de Usuario:</span> {{ userId }}</p> -->
+    <p><span class="label">ID de Usuario:</span> {{ userId }}</p>
     <p><span class="label">Descripción:</span> {{ body }}</p>
   </div>
 </div>

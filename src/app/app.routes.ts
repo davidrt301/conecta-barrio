@@ -19,5 +19,9 @@ export const routes: Routes = [
     },{
         path: 'solicitudes/nueva',
         loadComponent:() => import('./pages/solicitudes-nueva/solicitudes-nueva').then(m => m.SolicitudesNueva)
+    },
+    {
+        path: 'solicitudes/prioridad',
+        loadComponent:() => import('./pages/solicitudes-prioridad/solicitudes-prioridad').then(m => m.SolicitudesPrioridad)
     }
 ];

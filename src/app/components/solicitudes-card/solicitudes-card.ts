@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
+import { Solicitudes } from '../../services/solicitudes';
 
 @Component({
   imports: [],
@@ -7,10 +8,23 @@ import { Component, Input } from '@angular/core';
   templateUrl: './solicitudes-card.html',
 })
 export class SolicitudesCard {
+
+  private solicitudesService = inject(Solicitudes);
+
   @Input() id= 0;
   @Input() userId = 0;
   @Input() title = '';
   @Input() body = '';
+  
+  get esPrioridad():boolean{
+    return this.solicitudesService.prioridad(this.id);
+  }
+
+  alternarPrioridad(): void {
+    this.solicitudesService.alternarPrioridad(this.id);
+  }
+
+
 
   resetScroll(element: HTMLElement) {
   const start = element.scrollTop;

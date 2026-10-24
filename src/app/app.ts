@@ -9,5 +9,6 @@ import { Solicitudes } from './services/solicitudes';
   templateUrl: './app.html',
 })
 export class App {
-  private solicitudesService = inject(Solicitudes); 
+  menuAbierto = signal(false);
+  
 }

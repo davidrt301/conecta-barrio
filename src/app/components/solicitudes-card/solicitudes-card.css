@@ -68,6 +68,53 @@
   color: #eff6eeff;
 }
 
+.card.prioridad{
+  border: 2px solid gold;
+}
+
+.btn-prioridad {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: gold;
+  padding: 0;
+  margin-left: auto; 
+}
+
+
+/* .favorito-boton {
+  position: absolute;
+  top: var(--espacio-xs);
+  right: var(--espacio-xs);
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+.favorito-boton:focus-visible {
+  outline: 3px solid var(--azul-principal);
+  outline-offset: 2px;
+}
+
+.favorito-icono {
+  font-size: 1.2rem;
+  color: var(--borde);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.favorito-icono.activo {
+  color: #e0446f;
+  transform: scale(1.15);
+} */
+
 p {--deep-space-blue: #273043ff;
 --lavender-grey: #9197aeff;
 --mint-cream: #eff6eeff;

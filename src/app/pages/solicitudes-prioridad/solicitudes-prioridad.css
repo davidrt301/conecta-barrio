@@ -1,0 +1,50 @@
+
+.titulo-pagina {
+  color: var(--azul-oscuro);
+  margin-bottom: var(--espacio-md);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--espacio-md);
+}
+
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-4px);
+}
+
+
+
+.sin-resultado {
+  color: var(--texto-suave);
+  padding: var(--espacio-lg) 0;
+}
+
+.estado-carga {
+  color: var(--texto-suave);
+  padding: var(--espacio-md) 0;
+}
+
+.estado-error {
+  color: #b0413e;
+  background: #fbeceb;
+  border: 1px solid #f0c9c7;
+  border-radius: var(--radio);
+  padding: var(--espacio-sm);
+  margin-bottom: var(--espacio-md);
+}
+
+
+
+
+
+
